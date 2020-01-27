@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './../Header/Header';
 import Footer from './../Footer/Footer';
+import RecipeCard from './../RecipeCard/RecipeCard';
 import { getAllRecipes } from './../utils/apiCalls/apiCalls';
 import { displayRandomRecipes } from './../utils/helpers/helpers';
 import './Home.scss';
@@ -24,10 +25,13 @@ export class Home extends Component {
   }
 
   render () {
-    console.log(this.state.randomRecipes)
+    let recipeCards = this.state.randomRecipes.map(recipe => {
+      return <RecipeCard recipe_name={recipe.recipe_name} image_url={recipe.image_url}/>
+    })
     return (
       <div>
         <Header />
+        {recipeCards}
         <Footer />
       </div>
     )
