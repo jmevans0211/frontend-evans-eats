@@ -4,7 +4,7 @@ import Footer from '../../Footer/Footer';
 import RecipeCard from '../../RecipeCard/RecipeCard';
 import { getAllRecipes } from '../../utils/apiCalls/apiCalls';
 import { displayRandomRecipes } from '../../utils/helpers/helpers';
-import { selectRecipes } from './../../actions/index';
+import { selectRecipes, getCategoryIds } from './../../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import './Home.scss';
@@ -21,7 +21,17 @@ export class Home extends Component {
     // const { selectRecipes } = this.props
     let randomRecipes = await this.fetchRecipes()
     await this.setState({ randomRecipes })
+    // await this.storeIds(randomRecipes)
     // await selectRecipes(recipes)
+  }
+
+  storeIds = (recipes) => {
+    const { getCategoryIds } = this.props
+    let categoryIds = recipes.map(recipe => {
+      return recipe.category_id
+    })
+
+    getCategoryIds(categoryIds)
   }
   
   fetchRecipes = async () => {
@@ -53,7 +63,8 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    selectRecipes
+    selectRecipes,
+    getCategoryIds
   }, dispatch)
 )
 
