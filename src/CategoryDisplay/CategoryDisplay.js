@@ -13,7 +13,11 @@ export class CategoryDisplay extends Component {
 
   render() {
     return (
-      <div>in category container</div>
+      <div>
+        <Header />
+        <p>**in CategoryDisplay**</p>
+        <Footer />
+      </div>
     )
   }
 }

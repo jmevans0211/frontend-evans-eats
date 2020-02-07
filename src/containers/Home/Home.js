@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Header from './../Header/Header';
-import Footer from './../Footer/Footer';
-import RecipeCard from './../RecipeCard/RecipeCard';
-import { getAllRecipes } from './../utils/apiCalls/apiCalls';
-import { displayRandomRecipes } from './../utils/helpers/helpers';
+import Header from '../../Header/Header';
+import Footer from '../../Footer/Footer';
+import RecipeCard from '../../RecipeCard/RecipeCard';
+import { getAllRecipes } from '../../utils/apiCalls/apiCalls';
+import { displayRandomRecipes } from '../../utils/helpers/helpers';
 import './Home.scss';
 
 export class Home extends Component {
