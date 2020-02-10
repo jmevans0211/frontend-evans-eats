@@ -18,11 +18,18 @@ export class Home extends Component {
   }
 
   async componentDidMount() {
-    // const { selectRecipes } = this.props
-    let randomRecipes = await this.fetchRecipes()
-    await this.setState({ randomRecipes })
-    // await this.storeIds(randomRecipes)
-    // await selectRecipes(recipes)
+    const { selectRecipes } = this.props
+
+    try {
+      let randomRecipes = await this.fetchRecipes()
+      console.log('props-->', this.props)
+      console.log('LOOK HERE-->', randomRecipes)
+      // await this.setState({ randomRecipes })
+      // await this.storeIds(randomRecipes)
+      selectRecipes(randomRecipes)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   storeIds = (recipes) => {
@@ -42,6 +49,7 @@ export class Home extends Component {
   }
 
   render () {
+    console.log('in render-->', this.props)
     // const { recipesSelected } = this.props
     let recipeCards = this.state.randomRecipes.map(recipe => {
       return <RecipeCard recipe_name={recipe.recipe_name} image_url={recipe.image_url}/>
@@ -58,7 +66,6 @@ export class Home extends Component {
 
 export const mapStateToProps = state => ({
   recipesSelected: state.recipesSelected,
-
 })
 
 export const mapDispatchToProps = dispatch => (

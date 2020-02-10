@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore } from 'redux';
-import { rootReducer } from './reducers';
+import { rootReducer } from './reducers/index';
 import App from './App/App';
 import './index.css';
 

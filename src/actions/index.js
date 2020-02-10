@@ -6,4 +6,4 @@ export const selectRecipes = recipesSelected => ({
 export const getCategoryIds = categoryIds => ({
   type: 'GET_CATEGORY_IDS',
   categoryIds
-})
+});
