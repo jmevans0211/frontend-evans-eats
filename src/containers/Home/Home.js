@@ -19,7 +19,7 @@ export class Home extends Component {
 
   async componentDidMount() {
     const { selectRecipes } = this.props
-
+console.log(selectRecipes, '<<---***')
     try {
       let randomRecipes = await this.fetchRecipes()
       console.log('props-->', this.props)
@@ -68,11 +68,9 @@ export const mapStateToProps = state => ({
   recipesSelected: state.recipesSelected,
 })
 
-export const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    selectRecipes,
-    getCategoryIds
-  }, dispatch)
+export const mapDispatchToProps = dispatch => ({
+  selectRecipes: recipesSelected => dispatch(selectRecipes(recipesSelected))
+  }
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

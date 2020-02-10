@@ -1,7 +1,7 @@
 export const recipesSelected = (state = [], action) => {
   switch (action.type) {
     case 'SELECT_RECIPES':
-      return action.recipesSelected
+      return [...state, action.recipesSelected]
     default:
       return state
   }
