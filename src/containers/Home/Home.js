@@ -45,8 +45,12 @@ export class Home extends Component {
 
   render () {
     const { recipesSelected } = this.props
+    const recipes = recipesSelected[0]
 
-    console.log('recipesSelected in RENDER', recipesSelected[0])
+    console.log("recipes i guess", recipes)
+    console.log('recipesSelected', recipesSelected)
+    console.log('recipesSelected[0] in RENDER', recipesSelected[0])
+    console.log('recipesSelected.recipesSelected', recipesSelected.recipesSelected)
     console.log('props in RENDER', this.props)
 
     let recipeCards = recipesSelected.map((recipe) => {
