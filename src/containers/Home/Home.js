@@ -18,43 +18,42 @@ export class Home extends Component {
   }
 
   async componentDidMount() {
-    const { selectRecipes } = this.props
+    const { selectRecipes } = this.props;
 
-console.log(this.props, '<<---***')
     try {
-      let randomRecipes = await this.fetchRecipes()
-      console.log('props-->', this.props)
-      console.log('recipes fetched-->', randomRecipes)
-      // await this.setState({ randomRecipes })
-      // await this.storeIds(randomRecipes)
-      selectRecipes(randomRecipes)
+      let recipes = await getAllRecipes();
+      let randomRecipes = await displayRandomRecipes(recipes);
+
+      await selectRecipes(randomRecipes);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
-  storeIds = (recipes) => {
-    const { getCategoryIds } = this.props
-    let categoryIds = recipes.map(recipe => {
-      return recipe.category_id
-    })
+  // storeIds = (recipes) => {
+  //   const { getCategoryIds } = this.props
+  //   let categoryIds = recipes.map(recipe => {
+  //     return recipe.category_id
+  //   })
 
-    getCategoryIds(categoryIds)
-  }
+  //   getCategoryIds(categoryIds);
+  // }
   
-  fetchRecipes = async () => {
-    // console.log('props--->', selectRecipes)
-    let recipes = await getAllRecipes();
-    let randomRecipes = await displayRandomRecipes(recipes)
-    return randomRecipes
-  }
+  // fetchRecipes = async () => {
+  //   return randomRecipes
+  // }
 
   render () {
-    console.log('in render-->', this.props)
-    // const { recipesSelected } = this.props
-    let recipeCards = this.state.randomRecipes.map(recipe => {
+    const { recipesSelected } = this.props
+
+    console.log('recipesSelected in RENDER', recipesSelected[0])
+    console.log('props in RENDER', this.props)
+
+    let recipeCards = recipesSelected.map((recipe) => {
+      console.log('recipe', recipe)
       return <RecipeCard recipe_name={recipe.recipe_name} image_url={recipe.image_url}/>
     })
+
     return (
       <div>
         <Header />
