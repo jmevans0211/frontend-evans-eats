@@ -10,8 +10,8 @@ import { bindActionCreators } from 'redux';
 import './Home.scss';
 
 export class Home extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       randomRecipes: []
     }
@@ -19,11 +19,12 @@ export class Home extends Component {
 
   async componentDidMount() {
     const { selectRecipes } = this.props
-console.log(selectRecipes, '<<---***')
+
+console.log(this.props, '<<---***')
     try {
       let randomRecipes = await this.fetchRecipes()
       console.log('props-->', this.props)
-      console.log('LOOK HERE-->', randomRecipes)
+      console.log('recipes fetched-->', randomRecipes)
       // await this.setState({ randomRecipes })
       // await this.storeIds(randomRecipes)
       selectRecipes(randomRecipes)
