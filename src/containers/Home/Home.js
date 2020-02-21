@@ -29,7 +29,6 @@ export class Home extends Component {
 
   render () {
     const { recipesSelected } = this.props;
-
     let recipeCards = recipesSelected.map(recipe => {
       return <RecipeCard key={recipe.recipe_name} recipe_name={recipe.recipe_name} image_url={recipe.image_url}/>
     })

@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Home from '../containers/Home/Home'
 import RecipeForm from './../RecipeForm/RecipeForm'
 import './App.scss';
-import { CategoryDisplay } from '../CategoryDisplay/CategoryDisplay';
+import CategoryDisplay from '../CategoryDisplay/CategoryDisplay';
 
 function App() {
   return (

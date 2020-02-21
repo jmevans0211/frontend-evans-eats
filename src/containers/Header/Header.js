@@ -10,10 +10,15 @@ export class Header extends Component {
 
   updateRecipesDisplayed = async (category) => {
     const { categoryIds, selectRecipes, clearRecipes } = this.props;
-    let recipes = await getRecipesByCategory(categoryIds[category])
 
-    await clearRecipes()
-    await selectRecipes(recipes)
+    try {
+      let recipes = await getRecipesByCategory(categoryIds[category])
+  
+      await clearRecipes()
+      await selectRecipes(recipes)
+    } catch (error) {
+      console.log('error in updateRecipesDisplayed', error)
+    }
   }
 
   render () {
