@@ -3,7 +3,24 @@ export const displayRandomRecipes = (recipes) => {
   return randomRecipes
 };
 
-//export const getCategoryIds = recipes => {
-  // (already have the names of the category so hard code this!)
-  //return //=> {category_1: 1, category_2:2}
-//}
+export const getCategoryIds = recipes => {
+  return recipes.reduce((acc, recipe) => {
+    if (!acc[recipe.category]){
+      acc[recipe.category] = recipe.category_id
+    }
+
+    return acc;
+  }, {})
+}
+
+
+// function sortColor() {
+//   return stars.reduce((acc, star) => {
+//     if(!acc[star.color]){
+//       acc[star.color] = []
+//     }
+//     if(!acc[star.color].includes(star.color)){
+//       acc[star.color].push(star)
+//     }
+//     return acc
+//   }, {})
