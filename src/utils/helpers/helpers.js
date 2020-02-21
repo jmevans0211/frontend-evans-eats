@@ -29,15 +29,3 @@ const renameCategories = recipes => {
     }
   })
 }
-
-
-// function sortColor() {
-//   return stars.reduce((acc, star) => {
-//     if(!acc[star.color]){
-//       acc[star.color] = []
-//     }
-//     if(!acc[star.color].includes(star.color)){
-//       acc[star.color].push(star)
-//     }
-//     return acc
-//   }, {})
