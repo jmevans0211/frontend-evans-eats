@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import Header from '../../Header/Header';
+import Header from '../Header/Header';
 import Footer from '../../Footer/Footer';
 import RecipeCard from '../../RecipeCard/RecipeCard';
 import { getAllRecipes } from '../../utils/apiCalls/apiCalls';
 import { displayRandomRecipes, getCategoryIds } from '../../utils/helpers/helpers';
 import { selectRecipes, storeCategoryIds } from './../../actions/index';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import './Home.scss';
 import { categoryIds } from '../../reducers/categoryIds';
 
 export class Home extends Component {
-
 
   async componentDidMount() {
     const { selectRecipes, storeCategoryIds } = this.props;

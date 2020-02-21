@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getRecipesByCategory } from './../../utils/apiCalls/apiCalls';
-import { selectRecipes } from './../../actions/index';
+import { selectRecipes, clearRecipes } from './../../actions/index';
 
 import './Header.scss';
 
 export class Header extends Component {
 
   updateRecipesDisplayed = async (category) => {
-    const { categoryIds, selectRecipes } = this.props;
+    const { categoryIds, selectRecipes, clearRecipes } = this.props;
     let recipes = await getRecipesByCategory(categoryIds[category])
 
-
-    console.log(recipes)
+    await clearRecipes()
+    await selectRecipes(recipes)
   }
 
   render () {
@@ -49,6 +49,7 @@ export class Header extends Component {
 
 export const mapDispatchToProps = dispatch => ({
   selectRecipes: recipesSelected => dispatch(selectRecipes(recipesSelected)),
+  clearRecipes: () => dispatch(clearRecipes())
   }
 )
 
