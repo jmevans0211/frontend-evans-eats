@@ -3,40 +3,31 @@ import Header from '../../Header/Header';
 import Footer from '../../Footer/Footer';
 import RecipeCard from '../../RecipeCard/RecipeCard';
 import { getAllRecipes } from '../../utils/apiCalls/apiCalls';
-import { displayRandomRecipes } from '../../utils/helpers/helpers';
-import { selectRecipes, getCategoryIds } from './../../actions/index';
+import { displayRandomRecipes, getCategoryIds } from '../../utils/helpers/helpers';
+import { selectRecipes, storeCategoryIds } from './../../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import './Home.scss';
+import { categoryIds } from '../../reducers/categoryIds';
 
 export class Home extends Component {
 
 
   async componentDidMount() {
-    const { selectRecipes } = this.props;
+    const { selectRecipes, storeCategoryIds } = this.props;
 
     try {
       let recipes = await getAllRecipes();
+      let ids = await getCategoryIds(recipes)
       let randomRecipes = await displayRandomRecipes(recipes);
-
+      
       await selectRecipes(randomRecipes);
+      await storeCategoryIds(ids)
     } catch (error) {
       console.log(error);
     }
   }
 
-  // storeIds = (recipes) => {
-  //   const { getCategoryIds } = this.props
-  //   let categoryIds = recipes.map(recipe => {
-  //     return recipe.category_id
-  //   })
-
-  //   getCategoryIds(categoryIds);
-  // }
-  
-  // fetchRecipes = async () => {
-  //   return randomRecipes
-  // }
 
   render () {
     const { recipesSelected } = this.props;
@@ -60,7 +51,8 @@ export const mapStateToProps = state => ({
 })
 
 export const mapDispatchToProps = dispatch => ({
-  selectRecipes: recipesSelected => dispatch(selectRecipes(recipesSelected))
+  selectRecipes: recipesSelected => dispatch(selectRecipes(recipesSelected)),
+  storeCategoryIds: categoryIds => dispatch(storeCategoryIds(categoryIds))
   }
 )
 
