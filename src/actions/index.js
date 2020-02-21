@@ -3,7 +3,7 @@ export const selectRecipes = recipesSelected => ({
   recipesSelected
 });
 
-export const getCategoryIds = categoryIds => ({
-  type: 'GET_CATEGORY_IDS',
+export const storeCategoryIds = categoryIds => ({
+  type: 'STORE_CATEGORY_IDS',
   categoryIds
 });
