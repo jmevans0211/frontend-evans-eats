@@ -7,7 +7,6 @@ import { displayRandomRecipes, getCategoryIds } from '../../utils/helpers/helper
 import { selectRecipes, storeCategoryIds } from './../../actions/index';
 import { connect } from 'react-redux';
 import './Home.scss';
-import { categoryIds } from '../../reducers/categoryIds';
 
 export class Home extends Component {
 

@@ -8,7 +8,6 @@ export class CategoryDisplay extends Component {
 
   render() {
     let { recipesSelected } = this.props
-    console.log(recipesSelected)
     let recipeCards = recipesSelected.map(recipe => {
       return <RecipeCard key={recipe.recipe_name} recipe_name={recipe.recipe_name} image_url={recipe.image_url}/>
     })
@@ -16,7 +15,6 @@ export class CategoryDisplay extends Component {
     return (
       <div>
         <Header />
-        {/* <p>WHATS HAPPENING</p> */}
         {recipeCards}
         <Footer />
       </div>
