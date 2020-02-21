@@ -10,12 +10,7 @@ import { bindActionCreators } from 'redux';
 import './Home.scss';
 
 export class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      randomRecipes: []
-    }
-  }
+
 
   async componentDidMount() {
     const { selectRecipes } = this.props;
