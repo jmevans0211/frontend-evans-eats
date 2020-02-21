@@ -12,19 +12,19 @@ function Header() {
         <h3>+</h3>
         <ul>
           <Link to='/category'>
-            <li>Apps</li>
+            <li id='apps'>Apps</li>
           </Link>
           <Link to='/category'>
-            <li>Soups and Salads</li>
+            <li id='soups_and_salads'>Soups and Salads</li>
           </Link>
           <Link to='/category'>
-            <li>Meals</li>
+            <li id='meals'>Meals</li>
           </Link>
           <Link to='/category'>
-            <li>Beverages</li>
+            <li id='beverages'>Beverages</li>
           </Link>
           <Link to='/category'>
-            <li>Desserts</li>
+            <li id='desserts'>Desserts</li>
           </Link>
         </ul>
       </div>
