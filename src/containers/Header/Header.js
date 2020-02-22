@@ -28,7 +28,7 @@ export class Header extends Component {
         <h1>Evans<span>Eats</span></h1>
         <div>
           <h3>+</h3>
-          <ul>
+          <ul className='header__div--ul'>
             <Link to='/category'>
               <li onClick={() => this.updateRecipesDisplayed('apps')}>Apps</li>
             </Link>
