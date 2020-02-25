@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../Header/Header';
 import Footer from '../../Footer/Footer';
 import RecipeCard from '../../RecipeCard/RecipeCard';
+import CategoryDisplay from '../../CategoryDisplay/CategoryDisplay';
 import { getAllRecipes } from '../../utils/apiCalls/apiCalls';
 import { displayRandomRecipes, getCategoryIds } from '../../utils/helpers/helpers';
 import { selectRecipes, storeCategoryIds } from './../../actions/index';
@@ -27,17 +28,9 @@ export class Home extends Component {
 
 
   render () {
-    const { recipesSelected } = this.props;
-    let recipeCards = recipesSelected.map(recipe => {
-      return <RecipeCard key={recipe.recipe_name} recipe_name={recipe.recipe_name} image_url={recipe.image_url}/>
-    })
 
     return (
-      <div>
-        <Header />
-        {recipeCards}
-        <Footer />
-      </div>
+        <CategoryDisplay />
     )
   }
 }
