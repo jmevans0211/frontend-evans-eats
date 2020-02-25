@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getRecipesByCategory } from './../../utils/apiCalls/apiCalls';
 import { selectRecipes, clearRecipes } from './../../actions/index';
-
 import './Header.scss';
 
 export class Header extends Component {

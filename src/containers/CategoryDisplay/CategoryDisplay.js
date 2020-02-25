@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Header from '../containers/Header/Header';
-import Footer from './../Footer/Footer';
-import RecipeCard from './../RecipeCard/RecipeCard';
+import Header from '../Header/Header';
+import Footer from '../../Footer/Footer';
+import RecipeCard from '../../RecipeCard/RecipeCard';
+import './CategoryDisplay.scss';
 
 export class CategoryDisplay extends Component {
 
@@ -15,7 +16,9 @@ export class CategoryDisplay extends Component {
     return (
       <div>
         <Header />
-        {recipeCards}
+        <section className='categoryDisplay__div--section'>
+          {recipeCards}
+        </section>
         <Footer />
       </div>
     )
