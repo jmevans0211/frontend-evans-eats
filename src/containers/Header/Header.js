@@ -54,8 +54,7 @@ export class Header extends Component {
 export const mapDispatchToProps = dispatch => ({
   selectRecipes: recipesSelected => dispatch(selectRecipes(recipesSelected)),
   clearRecipes: () => dispatch(clearRecipes())
-  }
-)
+})
 
 export const mapStateToProps = state => ({
   categoryIds: state.categoryIds
