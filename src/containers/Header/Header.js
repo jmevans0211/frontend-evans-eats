@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getRecipesByCategory } from './../../utils/apiCalls/apiCalls';
 import { selectRecipes, clearRecipes } from './../../actions/index';
+import { IoMdAddCircleOutline } from 'react-icons/io';
 import './Header.scss';
 
 export class Header extends Component {
@@ -23,11 +24,13 @@ export class Header extends Component {
   render () {
 
     return (
-      <div className="Header">
-        <h1>Evans<span>Eats</span></h1>
-        <div>
-          <h3>+</h3>
-          <ul className='header__div--ul'>
+      <div className="header">
+        <div className='header__div--title'>
+          <h1>Evans<span>Eats</span></h1>
+          <h3><IoMdAddCircleOutline /></h3>
+        </div>
+        <nav>
+          <ul className='header__nav--ul'>
             <Link to='/category'>
               <li onClick={() => this.updateRecipesDisplayed('apps')}>Apps</li>
             </Link>
@@ -44,7 +47,7 @@ export class Header extends Component {
               <li onClick={() => this.updateRecipesDisplayed('desserts')}>Desserts</li>
             </Link>
           </ul>
-        </div>
+        </nav>
       </div>
     );
   }

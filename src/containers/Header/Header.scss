@@ -1,4 +1,25 @@
-.header__div--ul {
+$themeColor: #F24C2C;
+$secondaryShade: #36454f;
+
+.header {
+  font-family: 'Nanum Pen Script';
+  color: $secondaryShade;
+}
+
+.header__div--title {
+  display: flex;
+  font-size: 60px;
+  justify-content: space-between;
+  margin: 0 124px;
+  span {
+    color: $themeColor;
+  }
+  h1, h3 {
+    margin: 0
+  }
+}
+
+.header__nav--ul {
   display: flex;
   justify-content: space-evenly;
   list-style-type: none;
