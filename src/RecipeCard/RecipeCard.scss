@@ -3,7 +3,12 @@ $secondaryShade: #36454f;
 
 .recipeCard__div {
   color: $secondaryShade;
+  border: 1px pink solid;
   font-family: 'Nanum Pen Script';
   font-size: 40px;
-  padding: 15px;
+  display: inline-block;
+  margin: .5em;
+    h4 {
+      margin: .25em .5em;
+    }
 }

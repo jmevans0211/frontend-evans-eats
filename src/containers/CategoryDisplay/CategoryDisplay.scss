@@ -1,11 +1,4 @@
 .categoryDisplay__div--section {
-  display: flex;
-  flex-flow: wrap;
-  max-height: 800px;
-  margin: 0 10%; /* Adjustment for the gutter */
-  width: 100%;
-  // display: flex;
-  // flex-flow: row wrap;
-  // justify-content: center;
-  // margin: 20px;
+    column-count: 3;
+    column-gap: 2%
 }
