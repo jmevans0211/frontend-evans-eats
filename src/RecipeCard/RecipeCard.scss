@@ -1,14 +1,17 @@
 $themeColor: #F24C2C;
 $secondaryShade: #36454f;
+$bodyFont: 'Roboto Condensed';
 
 .recipeCard__div {
   color: $secondaryShade;
-  border: 1px pink solid;
-  font-family: 'Nanum Pen Script';
-  font-size: 40px;
+  font-family: $bodyFont;
+  font-size: 35px;
   display: inline-block;
   margin: .5em;
+  max-width: 300px;
     h4 {
-      margin: .25em .5em;
+      margin: .25em 0;
+      transform: translateY(121%);
+      background-color:rgba(255,255,255, 0.75)
     }
 }
