@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Header from '../containers/Header/Header';
-import Footer from './../Footer/Footer';
-import RecipeCard from './../RecipeCard/RecipeCard';
+import Header from '../Header/Header';
+import Footer from '../../Footer/Footer';
+import RecipeCard from '../../RecipeCard/RecipeCard';
+import './CategoryDisplay.scss';
 
 export class CategoryDisplay extends Component {
 
@@ -15,7 +16,10 @@ export class CategoryDisplay extends Component {
     return (
       <div>
         <Header />
-        {recipeCards}
+        <section className='categoryDisplay__div--section'>
+          {recipesSelected.length <= 0 && <img className='pizza_gif' src='https://media.giphy.com/media/3o7bu8sRnYpTOG1p8k/giphy.gif'/>}
+          {recipeCards}
+        </section>
         <Footer />
       </div>
     )
@@ -27,3 +31,6 @@ export const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, null)(CategoryDisplay);
+
+// {recipesSelected.length <= 0 && <img src='https://media.giphy.com/media/3o7bu8sRnYpTOG1p8k/giphy.gif'/>}
+

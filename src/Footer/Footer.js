@@ -4,7 +4,7 @@ import './Footer.scss';
 
 function Footer() {
   return (
-    <div>
+    <div className='footer__div'>
       <h3>About</h3>
       <h3>!</h3>
     </div>

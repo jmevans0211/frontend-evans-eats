@@ -1,0 +1,13 @@
+$themeColor: #F24C2C;
+$secondaryShade: #36454f;
+$bodyFont: 'Roboto Condensed';
+
+.footer__div {
+  background-color: $secondaryShade;
+  color: whitesmoke;
+  display: flex;
+  font-family: $bodyFont;
+  font-size: 22px;
+  justify-content: space-around;
+  margin-top: 25px;
+}

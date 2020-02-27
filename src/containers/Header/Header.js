@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getRecipesByCategory } from './../../utils/apiCalls/apiCalls';
 import { selectRecipes, clearRecipes } from './../../actions/index';
-
+import { IoMdAddCircleOutline } from 'react-icons/io';
 import './Header.scss';
 
 export class Header extends Component {
@@ -22,30 +22,33 @@ export class Header extends Component {
   }
 
   render () {
+    const categories = [
+      {title: 'Apps', class: 'apps'},
+      {title: 'Soups and Salads', class: 'soups_and_salads'},
+      {title: 'Meals', class: 'meals'},
+      {title: 'Beverages', class: 'beverages'},
+      {title: 'Desserts', class: 'desserts'}
+    ];
+
+    const navLinks = categories.map(category => {
+      return (
+        <Link to='/category' className='routerLink'>
+          <li onClick={() => this.updateRecipesDisplayed(category.class)}>{category.title}</li>
+        </Link>
+      )
+    });
 
     return (
-      <div className="Header">
-        <h1>Evans<span>Eats</span></h1>
-        <div>
-          <h3>+</h3>
-          <ul>
-            <Link to='/category'>
-              <li onClick={() => this.updateRecipesDisplayed('apps')}>Apps</li>
-            </Link>
-            <Link to='/category'>
-              <li onClick={() => this.updateRecipesDisplayed('soups_and_salads')}>Soups and Salads</li>
-            </Link>
-            <Link to='/category'>
-              <li onClick={() => this.updateRecipesDisplayed('meals')}>Meals</li>
-            </Link>
-            <Link to='/category'>
-              <li onClick={() => this.updateRecipesDisplayed('beverages')}>Beverages</li>
-            </Link>
-            <Link to='/category'>
-              <li onClick={() => this.updateRecipesDisplayed('desserts')}>Desserts</li>
-            </Link>
-          </ul>
+      <div className="header">
+        <div className='header__div--title'>
+          <h1>Evans<span>Eats</span></h1>
+          <h3><IoMdAddCircleOutline /></h3>
         </div>
+        <nav>
+          <ul className='header__nav--ul'>
+            {navLinks}
+          </ul>
+        </nav>
       </div>
     );
   }
@@ -55,8 +58,7 @@ export class Header extends Component {
 export const mapDispatchToProps = dispatch => ({
   selectRecipes: recipesSelected => dispatch(selectRecipes(recipesSelected)),
   clearRecipes: () => dispatch(clearRecipes())
-  }
-)
+})
 
 export const mapStateToProps = state => ({
   categoryIds: state.categoryIds
