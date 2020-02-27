@@ -22,6 +22,21 @@ export class Header extends Component {
   }
 
   render () {
+    const categories = [
+      {title: 'Apps', class: 'apps'},
+      {title: 'Soups and Salads', class: 'soups_and_salads'},
+      {title: 'Meals', class: 'meals'},
+      {title: 'Beverages', class: 'beverages'},
+      {title: 'Desserts', class: 'desserts'}
+    ];
+
+    const navLinks = categories.map(category => {
+      return (
+        <Link to='/category'>
+          <li onClick={() => this.updateRecipesDisplayed(category.class)}>{category.title}</li>
+      </Link>
+      )
+    })
 
     return (
       <div className="header">
@@ -31,21 +46,7 @@ export class Header extends Component {
         </div>
         <nav>
           <ul className='header__nav--ul'>
-            <Link to='/category'>
-              <li onClick={() => this.updateRecipesDisplayed('apps')}>Apps</li>
-            </Link>
-            <Link to='/category'>
-              <li onClick={() => this.updateRecipesDisplayed('soups_and_salads')}>Soups and Salads</li>
-            </Link>
-            <Link to='/category'>
-              <li onClick={() => this.updateRecipesDisplayed('meals')}>Meals</li>
-            </Link>
-            <Link to='/category'>
-              <li onClick={() => this.updateRecipesDisplayed('beverages')}>Beverages</li>
-            </Link>
-            <Link to='/category'>
-              <li onClick={() => this.updateRecipesDisplayed('desserts')}>Desserts</li>
-            </Link>
+            {navLinks}
           </ul>
         </nav>
       </div>
