@@ -1,26 +1,31 @@
 $themeColor: #F24C2C;
 $secondaryShade: #36454f;
+$bodyFont: 'Dosis';
 
 .header {
-  font-family: 'Nanum Pen Script';
   color: $secondaryShade;
 }
 
 .header__div--title {
   display: flex;
+  font-family: 'Nanum Pen Script';
   font-size: 60px;
   justify-content: space-between;
-  margin: 0 124px;
   span {
     color: $themeColor;
   }
-  h1, h3 {
-    margin: 0
+  h1 {
+    margin: .5em;
+  }
+  h3 {
+    margin: .75em 1.5em .75em .75em;
+    transform: translateY(25%)
   }
 }
 
 .header__nav--ul {
   display: flex;
+  font-family: $bodyFont;
   font-size: 3em;
   justify-content: space-evenly;
   list-style-type: none;
