@@ -1,6 +1,6 @@
 $themeColor: #F24C2C;
 $secondaryShade: #36454f;
-$bodyFont: 'Dosis';
+$bodyFont: 'Roboto Condensed';
 
 .header {
   color: $secondaryShade;
@@ -15,18 +15,29 @@ $bodyFont: 'Dosis';
     color: $themeColor;
   }
   h1 {
-    margin: .5em;
+    margin: .5em .5em .05em .5em;
   }
   h3 {
-    margin: .75em 1.5em .75em .75em;
-    transform: translateY(25%)
+    margin: .75em 1.5em .5em .75em;
+    transform: translateY(30%)
   }
 }
 
 .header__nav--ul {
+  background-color: $secondaryShade;
   display: flex;
   font-family: $bodyFont;
-  font-size: 3em;
+  font-size: 1.75em;
   justify-content: space-evenly;
   list-style-type: none;
+  margin: .5em 0; 
+  padding: .25em;
+}
+
+.routerLink {
+  text-decoration: none;
+  color: whitesmoke;
+  :hover {
+    color: $themeColor;
+  }
 }
