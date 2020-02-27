@@ -17,6 +17,7 @@ export class CategoryDisplay extends Component {
       <div>
         <Header />
         <section className='categoryDisplay__div--section'>
+          {recipesSelected.length <= 0 && <img className='pizza_gif' src='https://media.giphy.com/media/3o7bu8sRnYpTOG1p8k/giphy.gif'/>}
           {recipeCards}
         </section>
         <Footer />
@@ -30,3 +31,6 @@ export const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, null)(CategoryDisplay);
+
+// {recipesSelected.length <= 0 && <img src='https://media.giphy.com/media/3o7bu8sRnYpTOG1p8k/giphy.gif'/>}
+
