@@ -5,7 +5,11 @@ import Footer from '../Footer/Footer';
 export class Recipe extends Component {
   render() {
     return (
-      <p>in recipe component!!!!</p>
+      <div>
+        <Header />
+          <p>in recipe component!!!!</p>
+        <Footer />
+      </div>
     )
   }
 }

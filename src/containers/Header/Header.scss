@@ -34,9 +34,16 @@ $bodyFont: 'Roboto Condensed';
   padding: .25em;
 }
 
-.routerLink {
+.header__div--title-link {
   text-decoration: none;
+}
+.header__div--title-link:visited {
+  color: $secondaryShade;
+    }
+
+.routerLink {
   color: whitesmoke;
+  text-decoration: none;
   :hover {
     color: $themeColor;
   }
