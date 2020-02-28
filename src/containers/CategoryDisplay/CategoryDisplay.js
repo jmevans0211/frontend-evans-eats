@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Header from '../Header/Header';
 import Footer from '../../Footer/Footer';
@@ -10,7 +11,16 @@ export class CategoryDisplay extends Component {
   render() {
     let { recipesSelected } = this.props
     let recipeCards = recipesSelected.map(recipe => {
-      return <RecipeCard key={recipe.recipe_name} recipe_name={recipe.recipe_name} image_url={recipe.image_url}/>
+      return (
+        <Link to='/recipe' className='routerLink'>
+          <RecipeCard 
+            key={recipe.recipe_name}
+            recipe_name={recipe.recipe_name} 
+            image_url={recipe.image_url}
+            
+          />
+        </Link>
+      )
     })
 
     return (
@@ -31,6 +41,3 @@ export const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, null)(CategoryDisplay);
-
-// {recipesSelected.length <= 0 && <img src='https://media.giphy.com/media/3o7bu8sRnYpTOG1p8k/giphy.gif'/>}
-
