@@ -10,4 +10,8 @@ export const storeCategoryIds = categoryIds => ({
 
 export const clearRecipes = () => ({
   type: 'CLEAR_RECIPES'
-})
+});
+
+export const showRecipe = () => ({
+  type: 'SHOW_RECIPE'
+});

@@ -4,12 +4,26 @@ import { connect } from 'react-redux';
 import Header from '../Header/Header';
 import Footer from '../../Footer/Footer';
 import RecipeCard from '../../RecipeCard/RecipeCard';
+import { showRecipe } from './../../actions/index';
 import './CategoryDisplay.scss';
 
 export class CategoryDisplay extends Component {
 
+  findRecipe = (e, id) => {
+    console.log(e.target)
+    console.log('in findRecipe*****', id)
+    let { recipesSelected, showRecipe } = this.props;
+
+    let recipeClicked = recipesSelected.find(recipe => {
+      return recipe.id === id
+    });
+
+    showRecipe(recipeClicked)
+
+  }
+
   render() {
-    let { recipesSelected } = this.props
+    let { recipesSelected } = this.props;
     let recipeCards = recipesSelected.map(recipe => {
       return (
         <Link to='/recipe' className='routerLink'>
@@ -17,11 +31,11 @@ export class CategoryDisplay extends Component {
             key={recipe.recipe_name}
             recipe_name={recipe.recipe_name} 
             image_url={recipe.image_url}
-            
+            // onClick={(e) => this.findRecipe(e, recipe.id)}
           />
         </Link>
-      )
-    })
+      );
+    });
 
     return (
       <div>
@@ -36,8 +50,12 @@ export class CategoryDisplay extends Component {
   }
 }
 
+export const mapDispatchToProps = dispatch => ({
+  showRecipe: recipe => dispatch(showRecipe(recipe))
+})
+
 export const mapStateToProps = state => ({
   recipesSelected: state.recipesSelected,
 });
 
-export default connect(mapStateToProps, null)(CategoryDisplay);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryDisplay);
