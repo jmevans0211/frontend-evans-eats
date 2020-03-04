@@ -33,7 +33,7 @@ export class Header extends Component {
     const navLinks = categories.map(category => {
       return (
         <Link to='/category' className='routerLink'>
-          <li onClick={() => this.updateRecipesDisplayed(category.class)}>{category.title}</li>
+          <li key={category.title} onClick={() => this.updateRecipesDisplayed(category.class)}>{category.title}</li>
         </Link>
       )
     });

@@ -12,6 +12,7 @@ export const clearRecipes = () => ({
   type: 'CLEAR_RECIPES'
 });
 
-export const showRecipe = () => ({
-  type: 'SHOW_RECIPE'
+export const showRecipe = recipe => ({
+  type: 'SHOW_RECIPE',
+  recipe
 });

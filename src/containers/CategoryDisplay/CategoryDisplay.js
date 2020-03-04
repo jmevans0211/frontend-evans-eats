@@ -1,27 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import Header from '../Header/Header';
 import Footer from '../../Footer/Footer';
 import RecipeCard from '../../RecipeCard/RecipeCard';
 import { showRecipe } from './../../actions/index';
+import { connect } from 'react-redux';
 import './CategoryDisplay.scss';
 
 export class CategoryDisplay extends Component {
-
-  findRecipe = (e, id) => {
-    console.log(e.target)
-    console.log('in findRecipe*****', id)
-    let { recipesSelected, showRecipe } = this.props;
-
-    let recipeClicked = recipesSelected.find(recipe => {
-      return recipe.id === id
-    });
-
-    showRecipe(recipeClicked)
-
-  }
-
+  
   render() {
     let { recipesSelected } = this.props;
     let recipeCards = recipesSelected.map(recipe => {
@@ -31,7 +18,7 @@ export class CategoryDisplay extends Component {
             key={recipe.recipe_name}
             recipe_name={recipe.recipe_name} 
             image_url={recipe.image_url}
-            // onClick={(e) => this.findRecipe(e, recipe.id)}
+            id={recipe.id}
           />
         </Link>
       );
