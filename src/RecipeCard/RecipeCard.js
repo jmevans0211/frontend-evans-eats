@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './RecipeCard.scss';
 import { showRecipe } from './../../src/actions';
 import { connect } from 'react-redux';
-import { recipe } from '../reducers/recipe';
 
 export class RecipeCard extends Component {
 
