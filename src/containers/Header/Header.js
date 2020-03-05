@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getRecipesByCategory } from './../../utils/apiCalls/apiCalls';
 import { selectRecipes, clearRecipes } from './../../actions/index';
@@ -33,7 +33,7 @@ export class Header extends Component {
     const navLinks = categories.map(category => {
       return (
         <Link to='/category' className='routerLink'>
-          <li onClick={() => this.updateRecipesDisplayed(category.class)}>{category.title}</li>
+          <li key={category.title} onClick={() => this.updateRecipesDisplayed(category.class)}>{category.title}</li>
         </Link>
       )
     });
@@ -41,7 +41,9 @@ export class Header extends Component {
     return (
       <div className="header">
         <div className='header__div--title'>
-          <h1>Evans<span>Eats</span></h1>
+          <Link to='/' className='header__div--title-link'>
+            <h1>Evans<span>Eats</span></h1>
+          </Link>
           <h3><IoMdAddCircleOutline /></h3>
         </div>
         <nav>

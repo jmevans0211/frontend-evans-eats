@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import Header from '../Header/Header';
-import Footer from '../../Footer/Footer';
-import RecipeCard from '../../RecipeCard/RecipeCard';
 import CategoryDisplay from '../CategoryDisplay/CategoryDisplay';
 import { getAllRecipes } from '../../utils/apiCalls/apiCalls';
 import { displayRandomRecipes, getCategoryIds } from '../../utils/helpers/helpers';

@@ -1,17 +1,28 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../../Footer/Footer';
 import RecipeCard from '../../RecipeCard/RecipeCard';
+import { showRecipe } from './../../actions/index';
+import { connect } from 'react-redux';
 import './CategoryDisplay.scss';
 
 export class CategoryDisplay extends Component {
-
+  
   render() {
-    let { recipesSelected } = this.props
+    let { recipesSelected } = this.props;
     let recipeCards = recipesSelected.map(recipe => {
-      return <RecipeCard key={recipe.recipe_name} recipe_name={recipe.recipe_name} image_url={recipe.image_url}/>
-    })
+      return (
+        <Link to='/recipe' className='routerLink'>
+          <RecipeCard 
+            key={recipe.recipe_name}
+            recipe_name={recipe.recipe_name} 
+            image_url={recipe.image_url}
+            id={recipe.id}
+          />
+        </Link>
+      );
+    });
 
     return (
       <div>
@@ -26,11 +37,12 @@ export class CategoryDisplay extends Component {
   }
 }
 
+export const mapDispatchToProps = dispatch => ({
+  showRecipe: recipe => dispatch(showRecipe(recipe))
+})
+
 export const mapStateToProps = state => ({
   recipesSelected: state.recipesSelected,
 });
 
-export default connect(mapStateToProps, null)(CategoryDisplay);
-
-// {recipesSelected.length <= 0 && <img src='https://media.giphy.com/media/3o7bu8sRnYpTOG1p8k/giphy.gif'/>}
-
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryDisplay);
