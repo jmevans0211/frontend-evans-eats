@@ -3,16 +3,16 @@ import React, { useState, useEffect } from 'react';
 function RecipeForm() {
   const [image, setImage] = useState('');
   const [loading, setLoading] = useState(false);
-  const [recipeName, setRecipeName] = useState('');
-  const [approxTime, setApproxTime] = useState('');
-  const [ingredients, setIngredients] = useState('');
-  const [instructions, setInstructions] = useState('');
-  const [notes, setNotes] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-  const [category, categoryUrl] = useState('');
-  const [categoryId, setCategoryId] = useState('')
-
-// look in helper function to find category ids for the post
+  const [recipe, setRecipe] = useState({
+    recipeName: '',
+    approxTime: '',
+    ingredients: '',
+    instructions: '',
+    notes: '',
+    category: '',
+    categoryId: '',
+    imageUrl: ''
+  })
 
   const uploadImage = async e => {
     const files = e.target.files
@@ -29,22 +29,82 @@ function RecipeForm() {
     )
     const file = await response.json()
 
-    setImage(file.secure_url)
+    setRecipe({
+      ...recipe,
+      imageUrl: file.secure_url
+    });
+
+    // setImage(file.secure_url)
     setLoading(false)
   }
 
-  const handleRecipeName = (name) => {
-    setRecipeName(name)
-  }
+  const handleChange = (e) => {
+    setRecipe({
+      ...recipe,
+      [e.target.name]: e.target.value
+    });
+  };
 
   return (
     <div>
-      <div className='input-name-container'>
+      <div className='name-container'>
         <label>Recipe Name:</label>
-        <input 
+        <input
+          name='recipeName'
           type='text'
-          onChange={(e) => handleRecipeName(e.target.value)} 
+          value={recipe.recipeName}
+          onChange={handleChange} 
         />
+      </div>
+      <div className='approx-time-container'>
+        <label>Approx Time:</label>
+        <input
+          name='approxTime'
+          type='text'
+          value={recipe.approxTime}
+          onChange={handleChange} 
+        />
+      </div>
+      <div className='ingredients-container'>
+        <label>Ingredients:</label>
+        <input
+          name='ingredients'
+          type='text'
+          value={recipe.ingredients}
+          onChange={handleChange} 
+        />
+      </div>
+      <div className='instructions-container'>
+        <label>Instructions:</label>
+        <input
+          name='instructions'
+          type='text'
+          value={recipe.instructions}
+          onChange={handleChange} 
+        />
+      </div>
+      <div className='notes-container'>
+        <label>Notes:</label>
+        <input
+          name='notes'
+          type='text'
+          value={recipe.notes}
+          onChange={handleChange} 
+        />
+      </div>
+      <div className='category-container'>
+        <label>Category:</label>
+        <select
+          onChange={handleChange}
+          name='category' 
+        >
+          <option value=''></option>
+          <option value='apps'>Apps</option>
+          <option value='soups_and_salads'>Soups and Salads</option>
+          <option value='meals'>Meals</option>
+          <option value='beverages'>Beverages</option>
+          <option value='desserts'>Desserts</option>
+        </select>
       </div>
       <div className='upload-image-container'>
         <h1>Upload Image</h1>
