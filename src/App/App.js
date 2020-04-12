@@ -12,6 +12,7 @@ function App() {
       <Route exact path='/' render={ () => <Home /> }/>
       <Route exact path='/category' render={ () => <CategoryDisplay /> } />
       <Route exact path='/recipe' render={ () => <Recipe /> }/>
+      <Route exact path='/add-recipe' render={ () => <RecipeForm /> } /> 
     </div>
   );
 }

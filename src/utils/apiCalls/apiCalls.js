@@ -25,3 +25,15 @@ export const getRecipesByCategory = async id => {
 
   return data;
 };
+
+export const getCategories = async () => {
+  const response = await fetch('https://evans-eats-api.herokuapp.com/api/v1/categories/')
+
+  if (!response.ok) {
+    throw new Error('Could not get categories')
+  };
+  
+  const data = await response.json();
+
+  return data;
+};

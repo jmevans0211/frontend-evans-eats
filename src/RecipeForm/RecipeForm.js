@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function RecipeForm() {
-  const [image, setImage] = useState('')
-  const[loading, setLoading] = useState(false)
+  const [image, setImage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [recipeName, setRecipeName] = useState('');
+  const [approxTime, setApproxTime] = useState('');
+  const [ingredients, setIngredients] = useState('');
+  const [instructions, setInstructions] = useState('');
+  const [notes, setNotes] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const [category, categoryUrl] = useState('');
+  const [categoryId, setCategoryId] = useState('')
+
+// look in helper function to find category ids for the post
 
   const uploadImage = async e => {
     const files = e.target.files
@@ -23,20 +33,33 @@ function RecipeForm() {
     setLoading(false)
   }
 
+  const handleRecipeName = (name) => {
+    setRecipeName(name)
+  }
+
   return (
     <div>
-      <h1>Upload Image</h1>
-      <input 
-        type="file"
-        name="file"
-        placeholder="Upload recipe image"
-        onChange={uploadImage}
-      />
-      {loading ? (
-        <h3>Loading image...</h3>
-      ): (
-        <img src={image} style ={{width: '300px'}} />
-      )}
+      <div className='input-name-container'>
+        <label>Recipe Name:</label>
+        <input 
+          type='text'
+          onChange={(e) => handleRecipeName(e.target.value)} 
+        />
+      </div>
+      <div className='upload-image-container'>
+        <h1>Upload Image</h1>
+        <input 
+          type="file"
+          name="file"
+          placeholder="Upload recipe image"
+          onChange={uploadImage}
+        />
+        {loading ? (
+          <h3>Loading image...</h3>
+        ): (
+          <img src={image} style ={{width: '300px'}} />
+        )}
+      </div>
     </div>
   )
 };
