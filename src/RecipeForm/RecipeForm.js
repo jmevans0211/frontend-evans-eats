@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { postNewRecipe } from '../utils/apiCalls/apiCalls';
 
-function RecipeForm() {
-  const [image, setImage] = useState('');
+export const RecipeForm = ({categoryIds}) => {
   const [loading, setLoading] = useState(false);
   const [recipe, setRecipe] = useState({
-    recipeName: '',
-    approxTime: '',
+    recipe_name: '',
+    approx_time: '',
     ingredients: '',
     instructions: '',
     notes: '',
-    category: '',
-    categoryId: '',
-    imageUrl: ''
+    image_url: '',
+    category_id: 0,
   })
 
   const uploadImage = async e => {
@@ -31,10 +31,9 @@ function RecipeForm() {
 
     setRecipe({
       ...recipe,
-      imageUrl: file.secure_url
+      image_url: file.secure_url
     });
 
-    // setImage(file.secure_url)
     setLoading(false)
   }
 
@@ -45,23 +44,27 @@ function RecipeForm() {
     });
   };
 
+  const saveNewRecipe = async () => {
+    await postNewRecipe(recipe)
+  }
+
   return (
     <div>
       <div className='name-container'>
         <label>Recipe Name:</label>
         <input
-          name='recipeName'
+          name='recipe_name'
           type='text'
-          value={recipe.recipeName}
+          value={recipe.recipe_name}
           onChange={handleChange} 
         />
       </div>
       <div className='approx-time-container'>
         <label>Approx Time:</label>
         <input
-          name='approxTime'
+          name='approx_time'
           type='text'
-          value={recipe.approxTime}
+          value={recipe.approx_time}
           onChange={handleChange} 
         />
       </div>
@@ -96,18 +99,18 @@ function RecipeForm() {
         <label>Category:</label>
         <select
           onChange={handleChange}
-          name='category' 
+          name='category_id' 
         >
-          <option value=''></option>
-          <option value='apps'>Apps</option>
-          <option value='soups_and_salads'>Soups and Salads</option>
-          <option value='meals'>Meals</option>
-          <option value='beverages'>Beverages</option>
-          <option value='desserts'>Desserts</option>
+          <option value={0}></option>
+          <option value={categoryIds.apps}>Apps</option>
+          <option value={categoryIds.soups_and_salads}>Soups and Salads</option>
+          <option value={categoryIds.meals}>Meals</option>
+          <option value={categoryIds.beverages}>Beverages</option>
+          <option value={categoryIds.desserts}>Desserts</option>
         </select>
       </div>
       <div className='upload-image-container'>
-        <h1>Upload Image</h1>
+        <label>Upload Image:</label>
         <input 
           type="file"
           name="file"
@@ -117,12 +120,17 @@ function RecipeForm() {
         {loading ? (
           <h3>Loading image...</h3>
         ): (
-          <img src={image} style ={{width: '300px'}} />
+          <img src={recipe.image_url} style ={{width: '300px'}} />
         )}
       </div>
+      <button onClick={saveNewRecipe}>Save Recipe</button>
     </div>
   )
 };
 
-export default RecipeForm;
+const mapStateToProps = state => ({
+  categoryIds: state.categoryIds
+})
+
+export default connect(mapStateToProps, null)(RecipeForm);
 
