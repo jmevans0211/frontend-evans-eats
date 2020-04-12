@@ -12,7 +12,7 @@ export const getCategoryIds = recipes => {
 
     return acc;
   }, {})
-}
+};
 
 const renameCategories = recipes => {
   recipes.map(recipe => {
@@ -27,5 +27,11 @@ const renameCategories = recipes => {
     } else if (recipe.category === 'Beverages'){
       recipe.category = 'beverages'
     }
+  })
+};
+
+export const cleanCategories = categories => {
+  categories.map(category => {
+    return { id: category.id, name: category.category_name }
   })
 }

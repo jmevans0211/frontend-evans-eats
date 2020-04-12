@@ -44,7 +44,9 @@ export class Header extends Component {
           <Link to='/' className='header__div--title-link'>
             <h1>Evans<span>Eats</span></h1>
           </Link>
-          <h3><IoMdAddCircleOutline /></h3>
+          <Link to='/add-recipe'>
+            <h3><IoMdAddCircleOutline /></h3>
+          </Link>
         </div>
         <nav>
           <ul className='header__nav--ul'>
